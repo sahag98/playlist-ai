@@ -1,3 +1,4 @@
+import { CreatePlaylistDialog } from "@/components/dialogs/create-playlist";
 import Hero from "@/components/homepage/hero";
 import Image from "next/image";
 

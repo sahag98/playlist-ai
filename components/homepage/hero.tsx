@@ -4,7 +4,7 @@ import Image from "next/image";
 
 // Third-party library imports
 import Balancer from "react-wrap-balancer";
-import { Camera } from "lucide-react";
+import { Camera, Music } from "lucide-react";
 
 // Local component imports
 import { Section, Container } from "@/components/craft";
@@ -16,15 +16,15 @@ import Logo from "@/public/logo.png";
 const Hero = () => {
   return (
     <Section>
-      <Container className="flex flex-col items-center text-center">
+      <Container className="flex flex-col items-center gap-3 text-center">
         <Image
           src={Logo}
           width={1063}
           height={319}
           alt="Website Logo"
-          className="not-prose md:w-1/2 w-full mb-6 dark:invert md:mb-8"
+          className="not-prose md:w-1/2 w-full mb-5 dark:invert md:mb-5"
         />
-        <h1 className="!mb-0 font-bold text-6xl">
+        <h1 className="font-bold text-4xl md:text-7xl">
           <Balancer>Playlist Share</Balancer>
         </h1>
         <h3 className="text-muted-foreground">
@@ -32,11 +32,12 @@ const Hero = () => {
             Create and share playlists with friends and family.
           </Balancer>
         </h3>
-        <div className="not-prose flex gap-2 md:mt-12">
+        <div className="not-prose flex gap-2 mt-3">
           <Button asChild>
-            <Link href="/playlists">
-              <Camera className="mr-2" />
-              Get Started
+            <Link className="space-x-3" href="/playlists">
+              <Music />
+              {/* <Camera className="mr-2" /> */}
+              <span>Get Started</span>
             </Link>
           </Button>
           <Button variant={"ghost"} asChild>

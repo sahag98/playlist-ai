@@ -20,6 +20,27 @@ export const createPlaylist = mutation({
   },
 });
 
+export const deleteAllPlaylists = mutation({
+  args: {},
+  handler: async (ctx) => {
+    // const identity = await ctx.auth.getUserIdentity();
+    // console.log("identity: ", identity);
+    // if (identity === null) {
+    //   return;
+    // }
+
+    const playlists = await ctx.db.query("playlist").collect();
+
+    console.log("entries: ", playlists);
+
+    await Promise.all(
+      playlists.map(async (playlist) => {
+        return await ctx.db.delete(playlist._id);
+      })
+    );
+  },
+});
+
 export const getAllPlaylists = query({
   // args: {
   //   chatId: v.id("consultations"),

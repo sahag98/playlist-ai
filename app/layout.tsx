@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import "./globals.css";
 import { ConvexClientProvider } from "./ConvexClientProvider";
+import { cn } from "@/lib/utils";
 
 const montserrat = Montserrat({ subsets: ["latin"] });
 
@@ -17,7 +18,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={montserrat.className}>
+      <body className={cn(montserrat.className, "lg:px-44 md:px-24 px-4")}>
         <ConvexClientProvider>{children}</ConvexClientProvider>
       </body>
     </html>
