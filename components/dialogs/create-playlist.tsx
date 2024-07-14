@@ -26,6 +26,7 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { api } from "@/convex/_generated/api";
 import { useMutation } from "convex/react";
+import { useState } from "react";
 
 const formSchema = z.object({
   name: z.string().min(2).max(50),
@@ -47,13 +48,16 @@ export function CreatePlaylistDialog() {
     createPlaylist({
       name: values.name,
     });
+    setOpen(false);
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
     console.log(values);
   }
 
+  const [open, setOpen] = useState(false);
+
   return (
-    <Dialog>
+    <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         <Button size={"lg"}>Create</Button>
       </DialogTrigger>

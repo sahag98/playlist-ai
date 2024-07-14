@@ -27,6 +27,7 @@ import { z } from "zod";
 import { api } from "@/convex/_generated/api";
 import { useAction, useMutation } from "convex/react";
 import { Id } from "@/convex/_generated/dataModel";
+import { useState } from "react";
 
 const formSchema = z.object({
   link: z.string().min(2).max(50),
@@ -53,13 +54,16 @@ export function AddSongDialog({
       link: values.link,
       playlist_id,
     });
+    setOpen(false);
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
     console.log(values);
   }
 
+  const [open, setOpen] = useState(false);
+
   return (
-    <Dialog>
+    <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         <Button size={"lg"}>Add</Button>
       </DialogTrigger>

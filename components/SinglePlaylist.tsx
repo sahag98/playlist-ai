@@ -5,8 +5,9 @@ import React from "react";
 import { Button } from "./ui/button";
 import { scraperAction } from "@/actions/scraper-action";
 import { AddSongDialog } from "./dialogs/add-song";
-import { ExternalLink } from "lucide-react";
+import { ExternalLink, Share } from "lucide-react";
 import Link from "next/link";
+import { SharePlaylist } from "./dialogs/share-playlist";
 
 const SinglePlaylist = (props: {
   preloadedSinglePlaylist: Preloaded<typeof api.playlist.getSinglePlaylist>;
@@ -23,7 +24,12 @@ const SinglePlaylist = (props: {
     <main className="flex h-screen relative gap-4 w-full lg:px-44 md:px-24 px-4 flex-col mt-24">
       <section className="flex items-center justify-between">
         <h1 className="font-bold text-3xl">{playlist?.name}</h1>
-        {songs.length !== 0 && <AddSongDialog playlist_id={playlist?._id} />}
+        {songs.length !== 0 && (
+          <section className="flex items-center space-x-3">
+            <SharePlaylist />
+            <AddSongDialog playlist_id={playlist?._id} />
+          </section>
+        )}
       </section>
       {songs.length === 0 ? (
         <div className="flex flex-1 items-center justify-center rounded-lg border border-dashed shadow-sm">
@@ -34,6 +40,7 @@ const SinglePlaylist = (props: {
             <p className="text-sm text-muted-foreground mb-3">
               Add any type of media such as songs and videos.
             </p>
+
             <AddSongDialog playlist_id={playlist?._id} />
           </div>
         </div>

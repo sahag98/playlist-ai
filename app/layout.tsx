@@ -4,6 +4,7 @@ import "./globals.css";
 import { ConvexClientProvider } from "./ConvexClientProvider";
 import { cn } from "@/lib/utils";
 import NextTopLoader from "nextjs-toploader";
+import { Toaster } from "@/components/ui/toaster";
 
 const montserrat = Montserrat({ subsets: ["latin"] });
 
@@ -23,6 +24,7 @@ export default function RootLayout({
         <ConvexClientProvider>
           <NextTopLoader />
           {children}
+          <Toaster />
         </ConvexClientProvider>
       </body>
     </html>
