@@ -4,9 +4,8 @@ import { mutation, query } from "./_generated/server";
 export const createPlaylist = mutation({
   args: {
     name: v.string(),
-    link: v.string(),
   },
-  handler: async (ctx, { name, link }) => {
+  handler: async (ctx, { name }) => {
     // const identity = await ctx.auth.getUserIdentity();
     // console.log("identity: ", identity);
 
@@ -15,8 +14,21 @@ export const createPlaylist = mutation({
     // }
     await ctx.db.insert("playlist", {
       name,
-      link,
     });
+  },
+});
+
+export const getSinglePlaylist = query({
+  args: {
+    playlist_id: v.string(),
+  },
+  handler: async (ctx, args) => {
+    const singlePlaylist = await ctx.db
+      .query("playlist")
+      .filter((q) => q.eq(q.field("_id"), args.playlist_id))
+      .first();
+
+    return singlePlaylist;
   },
 });
 

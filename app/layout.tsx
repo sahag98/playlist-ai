@@ -3,6 +3,7 @@ import { Montserrat } from "next/font/google";
 import "./globals.css";
 import { ConvexClientProvider } from "./ConvexClientProvider";
 import { cn } from "@/lib/utils";
+import NextTopLoader from "nextjs-toploader";
 
 const montserrat = Montserrat({ subsets: ["latin"] });
 
@@ -18,8 +19,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={cn(montserrat.className, "lg:px-44 md:px-24 px-4")}>
-        <ConvexClientProvider>{children}</ConvexClientProvider>
+      <body className={cn(montserrat.className)}>
+        <ConvexClientProvider>
+          <NextTopLoader />
+          {children}
+        </ConvexClientProvider>
       </body>
     </html>
   );

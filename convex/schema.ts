@@ -4,6 +4,5 @@ import { v } from "convex/values";
 export default defineSchema({
   playlist: defineTable({
     name: v.string(),
-    link: v.string(),
   }),
 });
