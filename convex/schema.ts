@@ -5,4 +5,9 @@ export default defineSchema({
   playlist: defineTable({
     name: v.string(),
   }),
+  media: defineTable({
+    title: v.string(),
+    link: v.string(),
+    playlist_id: v.id("playlist"),
+  }),
 });
